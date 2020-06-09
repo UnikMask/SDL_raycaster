@@ -10,8 +10,8 @@ template <class T> struct gmat
 	T num_arr[2][2];
 	gmat<T> operator + (gmat<T> a);
 	gmat<T> operator - (gmat<T> a);
-	gmat<T> operator + (gvec<T> a);
-	gmat<T> operator - (gvec<T> a);
+	gmat<T> operator + (T a);
+	gmat<T> operator - (T a);
 	gmat<T> operator * (gmat<T> a);
 	gmat<T> operator * (T a);
 	gvec<T> operator * (gvec<T> a);

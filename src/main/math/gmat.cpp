@@ -112,3 +112,35 @@ template <class T> struct gmat<T> gmat_bemult(struct gmat<T> a, struct gmat<T> b
 	}
 	return  c;
 }
+
+template <class T> gmat<T> gmat<T>::operator + (gmat<T> a)
+{
+	return gmat_add(this, a);
+}
+template <class T> gmat<T> gmat<T>::operator - (gmat<T> a)
+{
+	return gmat_sub(this, a);
+}
+template <class T> gmat<T> gmat<T>::operator + (T a)
+{
+	return gmat_add(this, a);
+}
+template <class T> gmat<T> gmat<T>::operator - (T a)
+{
+	return gmat_sub(this, a);
+}
+template <class T> gmat<T> gmat<T>::operator * (gmat<T> a)
+{
+	return gmat_mult(this, a);
+}
+template <class T> gvec<T> gmat<T>::operator * (gvec<T> a)
+{
+	return gmat_mult(this, a);
+}
+template <class T> gmat<T> gmat<T>::operator * (T a)
+{
+	return gmat_mult(this, a);
+} template <class T> gvec<T> operator * (struct gvec<T> a, struct gmat<T> b)
+{
+	return gmat_mult(a, b);
+}
