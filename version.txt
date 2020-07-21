@@ -1,0 +1,2 @@
+# Libraycaster version - will be treated by regex
+0.1.0
