@@ -8,6 +8,10 @@ file(STRINGS version.txt VER_REG REGEX "^[0-9]+\\.[0-9]+\\.[0-9]+.*$"
 file(STRINGS desc.txt DESC_STR REGEX ".*\\$")
 project(raycaster VERSION ${VER_REG} DESCRIPTION ${DESC_STR})
 
+# Check for dependency libraries
+find_package(SDL REQUIRED)
+find_package(SDL_image REQUIRED)
+
 # Add all main directories
 list(APPEND TOTAL_DIRS
 	"${CMAKE_CURRENT_SOURCE_DIR}/src/main/math")
