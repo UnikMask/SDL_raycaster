@@ -14,6 +14,7 @@ struct gvec
 	gvec<T> operator - (T a);
 	T operator * (gvec<T> a);
 	gvec<T> operator * (T a);
+	bool operator == (gvec<T> a);
 	gvec<T> (T a, T b);
 };
 
@@ -35,5 +36,7 @@ template <class T> struct gvec<T> gvec_mult(struct gvec<T> a, T b);
 template <class T> T gvec_mult(struct gvec<T> a, struct gvec<T> b);
 /* Vector by-element multiplication */
 template <class T> struct gvec<T> gvec_bemult(struct gvec<T> a, struct gvec<T> b);
+/* Vector equality*/
+template <class T> bool gvec_eq(gvec<T> a, gvec<T> b);
 
 #endif

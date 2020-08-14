@@ -17,6 +17,7 @@ template <class T> struct gmat
 	gvec<T> operator * (gvec<T> a);
 	gmat<T> operator / (gmat<T> a);
 	gmat<T> operator / (T a);
+	bool operator == (gmat<T> a);
 	gmat<T> (T m00, T m01, T m10, T m11);
 	gmat<T> (gvec<T> row0, gvec<T> row1);
 };
@@ -44,6 +45,8 @@ template <class T> struct gvec<T> gmat_mult(struct gvec<T> a, struct gmat<T> b);
 template <class T> struct gvec<T> gmat_mult(struct gmat<T> a, struct gvec<T> b);
 /* Matrix to matrix by-element multiplication */
 template <class T> struct gmat<T> gmat_bemult(struct gmat<T> a, struct gmat<T> b);
+/* Matrix equality */
+template <class T> bool gmat_eq(struct gmat<T> a, struct gmat<T> b);
 
 
 #endif

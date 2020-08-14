@@ -125,6 +125,12 @@ template <class T> struct gmat<T> gmat_bemult(struct gmat<T> a, struct gmat<T> b
 	return  c;
 }
 
+template <class T> bool gmat_eq(struct gmat<T> a, struct gmat<T> b)
+{
+	return ( a.num_arr[0][0] == b.num_arr[0][0] && a.num_arr[0][1] == b.num_arr[0][1] &&
+			 a.num_arr[1][0] == b.num_arr[1][0] && a.num_arr[1][1] == b.num_arr[1][1]);
+}
+
 template <class T> gmat<T> gmat<T>::operator + (gmat<T> a)
 {
 	return gmat_add(this, a);
@@ -152,7 +158,12 @@ template <class T> gvec<T> gmat<T>::operator * (gvec<T> a)
 template <class T> gmat<T> gmat<T>::operator * (T a)
 {
 	return gmat_mult(this, a);
-} template <class T> gvec<T> operator * (struct gvec<T> a, struct gmat<T> b)
+}
+template <class T> gvec<T> operator * (struct gvec<T> a, struct gmat<T> b)
 {
 	return gmat_mult(a, b);
+}
+template <class T> bool gmat<T>::operator == (gmat<T> a)
+{
+	return gmat_eq(this, a);
 }
