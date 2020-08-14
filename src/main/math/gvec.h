@@ -14,6 +14,7 @@ struct gvec
 	gvec<T> operator - (T a);
 	T operator * (gvec<T> a);
 	gvec<T> operator * (T a);
+	gvec<T> (T a, T b);
 };
 
 typedef struct gvec<double> dvec;

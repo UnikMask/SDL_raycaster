@@ -17,6 +17,8 @@ template <class T> struct gmat
 	gvec<T> operator * (gvec<T> a);
 	gmat<T> operator / (gmat<T> a);
 	gmat<T> operator / (T a);
+	gmat<T> (T m00, T m01, T m10, T m11);
+	gmat<T> (gvec<T> row0, gvec<T> row1);
 };
 
 

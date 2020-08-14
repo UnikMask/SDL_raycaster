@@ -1,5 +1,17 @@
 #include "gmat.h"
 
+template <class T> gmat<T>::gmat(T m00, T m01, T m10, T m11)
+{
+	this->num_arr = {
+		{m00, m01},
+		{m10, m11}
+	};
+}
+
+template <class T> gmat<T>::gmat(gvec<T> row0, gvec<T> row1)
+{
+	this->num_arr = {row0.num_arr, row1.num_arr};
+}
 
 template <class T> struct gmat<T> gmat_add(struct gmat<T> a, struct gmat<T> b)
 {
