@@ -5,7 +5,7 @@ file(STRINGS version.txt VER_REG REGEX "^[0-9]+\\.[0-9]+\\.[0-9]+.*$"
 	LIMIT_COUNT 1)
 
 # Get description of the project
-file(STRINGS desc.txt DESC_STR REGEX ".*\\$")
+file(STRINGS desc.txt DESC_STR REGEX ".*$")
 project(raycaster VERSION ${VER_REG} DESCRIPTION ${DESC_STR})
 
 # Check for dependency libraries
