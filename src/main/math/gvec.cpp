@@ -88,3 +88,14 @@ template <class T> bool gvec<T>::operator == (gvec<T> a)
 {
 	return gvec_eq(this, a);
 }
+template <class T> bool gvec<T>::operator == (T a[2])
+{
+	gvec<T> b; b = a;
+	return gvec_eq(this, b);
+}
+template <class T> gvec<T> gvec<T>::operator = (T a[2])
+{
+	gvec<T> ret_vec;
+	ret_vec.num_arr = a;
+	return ret_vec;
+}

@@ -167,3 +167,9 @@ template <class T> bool gmat<T>::operator == (gmat<T> a)
 {
 	return gmat_eq(this, a);
 }
+template <class T> gmat<T> gmat<T>::operator = (T a[2][2])
+{
+	gmat<T> ret_mat;
+	ret_mat.num_arr = a;
+	return ret_mat;
+}
