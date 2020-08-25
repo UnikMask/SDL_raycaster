@@ -13,15 +13,16 @@ find_package(SDL REQUIRED)
 find_package(SDL_image REQUIRED)
 
 # Add all main directories
-list(APPEND TOTAL_DIRS
-	"${CMAKE_CURRENT_SOURCE_DIR}/src/main/math")
+set (INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
+list(APPEND CMAKELIST_DIRS
+	"${CMAKE_SOURCE_DIR}/src/main/math")
 
 # Call CMakeLists of all dirs and add created object files to list
-add_subdirectory(${TOTAL_DIRS})
+add_subdirectory(${CMAKELIST_DIRS})
 
 # Add include directories
 add_library(raycaster SHARED $<TARGET_OBJECTS:PlaneMaths>)
-target_include_directories(raycaster PUBLIC ${TOTAL_DIRS})
+target_include_directories(raycaster PUBLIC ${INCLUDE_DIR})
 
 # Add testing compilation
 option(COMPILE_TEST "Compile tests? " OFF)

@@ -62,31 +62,31 @@ template <class T> bool gvec_eq(gvec<T> a, gvec<T> b)
 
 template<class T> gvec<T> gvec<T>::operator + (gvec<T> a)
 {
-	return gvec_add(this, a);
+	return gvec_add(*this, a);
 }
 template<class T> gvec<T> gvec<T>::operator - (gvec<T> a)
 {
-	return gvec_sub(this, a);
+	return gvec_sub(*this, a);
 }
 template<class T> gvec<T> gvec<T>::operator + (T a)
 {
-	return gvec_add(this, a);
+	return gvec_add(*this, a);
 }
 template<class T> gvec<T> gvec<T>::operator - (T a)
 {
-	return gvec_sub(this, a);
+	return gvec_sub(*this, a);
 }
 template<class T> T gvec<T>::operator * (gvec<T> a)
 {
-	return gvec_mult(this, a);
+	return gvec_mult(*this, a);
 }
 template<class T> gvec<T> gvec<T>::operator * (T a)
 {
-	return gvec_mult(this, a);
+	return gvec_mult(*this, a);
 }
 template <class T> bool gvec<T>::operator == (gvec<T> a)
 {
-	return gvec_eq(this, a);
+	return gvec_eq(*this, a);
 }
 template <class T> bool gvec<T>::operator == (T a[2])
 {
