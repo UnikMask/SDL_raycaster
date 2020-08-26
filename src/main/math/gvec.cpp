@@ -5,6 +5,7 @@ template <class T> gvec<T>::gvec(T a, T b)
 	this->num_arr = {a, b};
 }
 
+
 template <class T> struct gvec<T> gvec_add(struct gvec<T> a, struct gvec<T> b)
 {
 	struct gvec<T> c;
@@ -59,6 +60,7 @@ template <class T> bool gvec_eq(gvec<T> a, gvec<T> b)
 {
 	return a.num_arr[0] == b.num_arr[0] && a.num_arr[1] == b.num_arr[1];
 }
+
 
 template<class T> gvec<T> gvec<T>::operator + (gvec<T> a)
 {

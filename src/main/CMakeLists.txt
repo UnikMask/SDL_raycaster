@@ -8,6 +8,10 @@ list (APPEND MATH_SOURCES
 list (APPEND PROJECT_SOURCES
 	${MATH_SOURCES})
 
-add_library(raycaster SHARED ${PROJECT_SOURCES})
+add_library(raycaster SHARED 
+	${MAIN_DIR}/math/gvec.cpp
+	${MAIN_DIR}/math/gmat.cpp
+	${INCLUDE_DIR}/gvec.h
+	${INCLUDE_DIR}/gmat.h)
 target_include_directories(raycaster PUBLIC ${INCLUDE_DIR})
 install (TARGETS raycaster ARCHIVE DESTINATION lib/)
