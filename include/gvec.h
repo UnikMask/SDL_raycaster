@@ -88,19 +88,17 @@ template <class T> void gvec_assign (gvec<T> a, gvec<T> b)
 		a.num_arr[i] = b.num_arr[i];
 	}
 }
+/* Assignment method for vector with an array */
+template <class T> void gvec_assign (gvec<T>* a, T b[2])
+{
+	a->num_arr[0] = b[0];
+	a->num_arr[1] = b[1];
+}
 
 template <class T> bool gvec_eq(gvec<T> a, gvec<T> b) // Vector and vector equality
 {
-	bool ret_eq = true;
-	for (size_t i = 0; i < sizeof(a.num_arr)/sizeof(*a.num_arr); i++)
-	{
-		if (a.num_arr[i] != b.num_arr[i])
-		{
-			ret_eq = false;
-			break;
-		}
-	}
-	return ret_eq;
+	if (a.num_arr[0] == b.num_arr[0] & a.num_arr[1] == b.num_arr[1]) return true; 
+	else return false;
 }
 
 template <class T> gvec<T> gvec<T>::operator + (gvec<T> a) // Vector and vector additon
@@ -138,11 +136,11 @@ template <class T> bool gvec<T>::operator == (const T a[2]) // Vector to array e
 }
 template <class T> gvec<T>::gvec (T a, T b) // Constructor
 {
-	*this = {a, b};
+	this->num_arr[0] = a;
+	this->num_arr[1] = b;
 }
 template <class T> gvec<T>::gvec ()
 {
-	*this = {0, 0};
 }
 
 #endif

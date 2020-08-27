@@ -1,4 +1,4 @@
 #define CATCH_CONFIG_MAIN
-#include "catch.hpp"
+#include <catch2/catch.hpp>
+#include <iostream>
 
-// This file is left empty by default and all tests are written in child files.
