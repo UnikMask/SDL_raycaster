@@ -28,26 +28,22 @@ typedef gvec<int> ivec;
 /* Vector to vector addition */
 template <class T> gvec<T> gvec_add(struct gvec<T> a, struct gvec<T> b)
 {
-	struct gvec<T> c (a.num_arr[0], a.num_arr[1]);
-	for (int i = 0; i < sizeof(c.num_arr) / sizeof(*c.num_arr); i++)
-		c.num_arr[i] += b.num_arr[i];
-	return c;
+	return gvec<T> (a.num_arr[0] + b.num_arr[0], 
+			a.num_arr[1] + b.num_arr[1]);
 }
 /* Vector to vector substraction */
 template <class T> gvec<T> gvec_sub(struct gvec<T> a, struct gvec<T> b)
 {
-	struct gvec<T> c (a.num_arr[0], a.num_arr[1]);
-	for (int i = 0; i < sizeof(c.num_arr) / sizeof(*c.num_arr); i++)
-		c.num_arr[i] -= b.num_arr[i];
-	return c;
+	return gvec<T> (a.num_arr[0] - b.num_arr[0],
+			a.num_arr[1] - b.num_arr[1]);
 }
 /* Vector to raw type addition */
 template <class T> gvec<T> gvec_add(struct gvec<T> a, T b)
 { 
-	struct gvec<T> c (a.num_arr[0], a.num_arr[1]);
+	struct gvec<T> c (0, 0);
 	for (int i = 0; i < sizeof(c.num_arr) / sizeof(*c.num_arr); i++)
 	{
-		c.num_arr[i] += b;
+		c.num_arr[i] = a.num_arr[i] + b;
 	}
 	return c;
 }
