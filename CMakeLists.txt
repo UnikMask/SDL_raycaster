@@ -9,7 +9,7 @@ file(STRINGS desc.txt DESC_STR REGEX ".*$")
 project(raycaster VERSION ${VER_REG} DESCRIPTION ${DESC_STR})
 
 # Check for dependency libraries
-find_package(SDL REQUIRED)
+find_package(SDL2 REQUIRED)
 find_package(SDL_image REQUIRED)
 
 # Add all main directories
