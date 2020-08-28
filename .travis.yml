@@ -8,11 +8,14 @@ compiler:
 addons:
     apt:
         update: true
+        sources:
+            - sourceline: 'ppa:ubuntu-toolchain-r/test'
         packages:
             - libsdl2-dev
             - libsdl2-image-dev
-            - cmake
-            - gcc
+            - cmake-3.15
+            - catch2
+            - g++-9.3
 
 
 install:    
