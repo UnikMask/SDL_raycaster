@@ -1,4 +1,5 @@
 Cmake_minimum_required(VERSION 3.9 FATAL_ERROR)
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/sdl2)
 
 # Get version from version text file
 file(STRINGS version.txt VER_REG REGEX "^[0-9]+\\.[0-9]+\\.[0-9]+.*$"
@@ -10,7 +11,7 @@ project(raycaster VERSION ${VER_REG} DESCRIPTION ${DESC_STR})
 
 # Check for dependency libraries
 find_package(SDL2 REQUIRED)
-find_package(SDL_image REQUIRED)
+find_package(SDL2_image REQUIRED)
 
 # Add all main directories
 set (INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
