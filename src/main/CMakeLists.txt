@@ -7,4 +7,7 @@ list (APPEND PROJECT_SOURCES
 
 add_library(raycaster SHARED ${MATH_SOURCES})
 target_include_directories(raycaster PUBLIC ${INCLUDE_DIR})
-install (TARGETS raycaster ARCHIVE DESTINATION lib/)
+install (TARGETS raycaster 
+	ARCHIVE DESTINATION lib/
+	LIBRARY DESTINATION lib 
+	COMPONENT library)
