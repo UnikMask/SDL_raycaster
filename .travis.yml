@@ -13,9 +13,9 @@ addons:
         packages:
             - libsdl2-dev
             - libsdl2-image-dev
-            - cmake-3.15
+            - cmake-3
             - catch2
-            - g++-9.3
+            - g++-9
 
 
 install:    
