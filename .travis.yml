@@ -1,5 +1,6 @@
 # This travis.yml is a modification of the file at https://riptutorial.com/cmake/example/4723/configure-travis-ci-with-newest-cmake
 # courtesy of cmake.org
+dist: bionic
 language: cpp
 
 compiler:
@@ -8,12 +9,19 @@ compiler:
 addons:
     apt:
         update: true
+        sources:
+            - sourceline: 'ppa:ubuntu-toolchain-r/test'
         packages:
             - libsdl2-dev
             - libsdl2-image-dev
             - cmake
-            - gcc
+            - g++-9
 
+before_install:
+    - git clone https://github.com/catchorg/Catch2.git
+    - cd Catch2
+    - cmake -Bbuild -H. -DBUILD_TESTING=OFF
+    - sudo cmake --build build/ --target install
 
 install:    
   - cd ${TRAVIS_BUILD_DIR}
