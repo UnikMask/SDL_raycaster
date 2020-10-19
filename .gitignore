@@ -3,4 +3,5 @@ build/
 *.o
 *.out
 compile_commands.json
+.ccls-cache
 Debug/

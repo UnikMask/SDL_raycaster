@@ -86,13 +86,10 @@ template <class T> struct gmat<T> gmat_mult(struct gmat<T> a, struct gmat<T> b)
 	// Loop on multiplied lengths of num_arr's rows and columns.
 	for (size_t row = 0; row < sizeof(c.num_arr) / sizeof(c.num_arr[0]); row++)
 		for (size_t col = 0; col < sizeof(c.num_arr[0]) / sizeof(T); col++)
-		{
-			c.num_arr[row][col] = 0;
 			for (int n = 0; n < sizeof(a.num_arr) / sizeof(*a.num_arr); n++) 
 			{
 				c.num_arr[row][col] += a.num_arr[row][n] * b.num_arr[n][col];
 			}
-		}
 	return  c;
 }
 /* Vector to matrix multiplication */
