@@ -15,7 +15,6 @@ addons:
             - libsdl2-dev
             - libsdl2-image-dev
             - cmake
-            - catch2
             - g++-9
 
 before_install:
