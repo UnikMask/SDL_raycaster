@@ -1,5 +1,8 @@
 # CMakeList for tests
 
+# List deps
+find_package (Catch2 REQUIRED)
+
 # List all include directories for testing
 set(INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
 set(TEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
