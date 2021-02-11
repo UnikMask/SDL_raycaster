@@ -9,6 +9,15 @@ file(STRINGS version.txt VER_REG REGEX "^[0-9]+\\.[0-9]+\\.[0-9]+.*$"
 file(STRINGS desc.txt DESC_STR REGEX ".*$")
 project(raycaster VERSION ${VER_REG} DESCRIPTION ${DESC_STR})
 
+# Fetch SDL2 package files from github
+if (NOT EXISTS "${CMAKE_SOURCE_DIR}/cmake/sdl2")
+	execute_process( COMMAND mkdir ${CMAKE_SOURCE_DIR}/cmake )
+	execute_process( COMMAND mkdir ${CMAKE_SOURCE_DIR}/cmake/sdl2 )
+	execute_process(
+	  COMMAND git clone "https://github.com/aminosbh/sdl2-cmake-modules.git"
+	  ${CMAKE_SOURCE_DIR}/cmake/sdl2)
+endif()
+
 # Check for dependency libraries
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
