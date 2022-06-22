@@ -7,22 +7,22 @@ compiler:
   - gcc
 
 addons:
-    apt:
-        update: true
-        sources:
-            - sourceline: 'ppa:ubuntu-toolchain-r/test'
-        packages:
-            - libsdl2-dev
-            - libsdl2-image-dev
-            - cmake
-            - g++-9
+  apt:
+    update: true
+    sources:
+      - sourceline: "ppa:ubuntu-toolchain-r/test"
+    packages:
+      - libsdl2-dev
+      - libsdl2-image-dev
+      - cmake
+      - g++-9
 
 before_install:
-    - git clone https://github.com/catchorg/Catch2.git
-    - cd Catch2
-    - git checkout v2.13.4
-    - cmake -Bbuild -H. -DBUILD_TESTING=OFF
-    - sudo cmake --build build/ --target install
+  - git clone https://github.com/catchorg/Catch2.git
+  - cd Catch2
+  - git checkout v2.13.4
+  - cmake -Bbuild -H. -DBUILD_TESTING=OFF
+  - sudo cmake --build build/ --target install
 
 install:
   - cd ${TRAVIS_BUILD_DIR}
@@ -40,4 +40,4 @@ script:
   # once CMake has done its job we just build using make as usual
   - make
   # if the project uses ctest we can run the tests like this
-  - src/test/Tester
+  - tests/Tester
