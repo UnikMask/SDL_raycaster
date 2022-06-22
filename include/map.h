@@ -1,8 +1,3 @@
-#ifndef RAYCAST_MAP_H
-#define RAYCAST_MAP_H
+#pragma once
 
-class raycast_map
-{
-};
-
-#endif
+class raycast_map {};

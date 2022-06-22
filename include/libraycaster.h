@@ -1,7 +1,3 @@
-#ifndef RAYCASTER_MAIN_H
-#define RAYCASTER_MAIN_H
+#pragma once
 
 #include "gvec.h"
-#include "gmat.h"
-
-#endif

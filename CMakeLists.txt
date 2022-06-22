@@ -25,7 +25,7 @@ find_package(SDL2_image REQUIRED)
 # Add all main directories
 set (INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
 list(APPEND CMAKELIST_DIRS
-	"${CMAKE_SOURCE_DIR}/src/main/")
+	"${CMAKE_SOURCE_DIR}/lib")
 
 # Call CMakeLists of all dirs and add created object files to list
 add_subdirectory(${CMAKELIST_DIRS})
@@ -35,6 +35,6 @@ add_subdirectory(${CMAKELIST_DIRS})
 # Add testing compilation
 option(COMPILE_TEST "Compile tests? " OFF)
 if(COMPILE_TEST)
-	add_subdirectory("${PROJECT_SOURCE_DIR}/src/test")
+	add_subdirectory("${PROJECT_SOURCE_DIR}/tests")
 	enable_testing()
 endif()

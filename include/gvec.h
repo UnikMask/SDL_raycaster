@@ -1,6 +1,7 @@
-#ifndef GVEC_H
-#define GVEC_H
+#pragma once
+
 #include <algorithm>
+#include <iostream>
 #include <vector>
 
 template <class T>
@@ -8,8 +9,7 @@ template <class T>
 struct gvec {
 public:
   /// Array of elements of the vector.
-  T num_arr[2];
-  std::vector<std::vector<T>> num_vec;
+  std::vector<T> vec;
 
   gvec<T> operator+(gvec<T> a);
   gvec<T> operator-(gvec<T> a);
@@ -38,10 +38,9 @@ typedef gvec<int> ivec;
  */
 template <class T> gvec<T> gvec_add(struct gvec<T> a, struct gvec<T> b) {
   std::vector<T> ret;
-  auto iter_a = a.num_vec.begin();
-  for (auto iter_b = b.num_vec.begin(); iter_b != b.num_vec.end(); iter_b++) {
+  for (auto iter_a = a.vec.begin(), iter_b = b.vec.begin();
+       iter_b != b.vec.end(); iter_a++, iter_b++) {
     ret.push_back(*iter_a + *iter_b);
-    iter_a++;
   }
   return gvec<T>(ret);
 }
@@ -53,12 +52,11 @@ template <class T> gvec<T> gvec_add(struct gvec<T> a, struct gvec<T> b) {
  * @return resulting addition.
  */
 template <class T> gvec<T> gvec_add(struct gvec<T> a, T b) {
-  std::vector<T> c_num_vec;
-  for (auto iter = a.num_vec.begin(); iter != a.num_vec.end(); iter++) {
-    c_num_vec.push_back(*iter + b);
+  std::vector<T> vec;
+  for (auto i = a.vec.begin(); i != a.vec.end(); i++) {
+    vec.push_back(*i + b);
   }
-  struct gvec<T> c(c_num_vec[0], c_num_vec[1]);
-  return c;
+  return gvec<T>(vec);
 }
 
 /**
@@ -69,8 +67,8 @@ template <class T> gvec<T> gvec_add(struct gvec<T> a, T b) {
  */
 template <class T> gvec<T> gvec_mult(struct gvec<T> a, T b) {
   std::vector<T> vec;
-  for (auto iter = a.num_vec.begin(); iter != a.num_vec.end(); iter++) {
-    vec.push_back(*iter * b);
+  for (auto i = a.vec.begin(); i != a.vec.end(); i++) {
+    vec.push_back(*i * b);
   }
   return gvec<T>(vec);
 }
@@ -82,7 +80,7 @@ template <class T> gvec<T> gvec_mult(struct gvec<T> a, T b) {
  * @return Resulting dot product.
  */
 template <class T> T gvec_mult(struct gvec<T> a, struct gvec<T> b) {
-  return a.num_vec[0] * b.num_vec[0] + a.num_vec[1] * b.num_vec[1];
+  return a.vec[0] * b.vec[0] + a.vec[1] * b.vec[1];
 }
 
 /**
@@ -94,9 +92,9 @@ template <class T> T gvec_mult(struct gvec<T> a, struct gvec<T> b) {
 template <class T> gvec<T> gvec_bemult(struct gvec<T> a, struct gvec<T> b) {
   std::vector<T> vec;
 
-  auto iter_a = a.num_vec.begin();
-  for (auto iter_b = b.num_vec.begin(); iter_b != b.num_vec.end(); iter_b++) {
-    vec.push_back(*iter_a * *iter_b);
+  for (auto i_a = a.vec.begin(), i_b = b.vec.begin(); i_a != a.vec.end();
+       i_a++, i_b++) {
+    vec.push_back((*i_a) * (*i_b));
   }
 
   return gvec<T>(vec);
@@ -109,8 +107,8 @@ template <class T> gvec<T> gvec_bemult(struct gvec<T> a, struct gvec<T> b) {
  */
 template <class T> void gvec_assign(gvec<T> a, gvec<T> b) {
   std::vector<T> vec;
-  std::copy(a.num_vec.begin(), a.num_vec.end(), vec.begin());
-  b.num_vec = vec;
+  std::copy(a.vec.begin(), a.vec.end(), vec.begin());
+  b.vec = vec;
 }
 
 /**
@@ -119,7 +117,7 @@ template <class T> void gvec_assign(gvec<T> a, gvec<T> b) {
  * @param b Array to assign to vector.
  */
 template <class T> void gvec_assign(gvec<T> *a, std::vector<T> b) {
-  a->num_vec = b;
+  a->vec.assign(b.begin(), b.end());
 }
 
 /**
@@ -129,7 +127,7 @@ template <class T> void gvec_assign(gvec<T> *a, std::vector<T> b) {
  * @return Equality status.
  */
 template <class T> bool gvec_eq(gvec<T> a, gvec<T> b) {
-  return std::equal(a.num_vec.begin(), a.num_vec.end(), b.num_vec.begin());
+  return std::equal(a.vec.begin(), a.vec.end(), b.vec.begin());
 }
 
 template <class T> gvec<T> gvec<T>::operator+(gvec<T> a) {
@@ -159,12 +157,9 @@ template <class T> bool gvec<T>::operator==(const T a[2]) {
 }
 template <class T> gvec<T>::gvec(T a, T b) {
   std::vector<T> ret{a, b};
-  this->num_vec = ret;
+  this->vec.assign(ret.begin(), ret.end());
 }
-template <class T> gvec<T>::gvec() {
-  std::vector<T> ret{0, 0};
-  this->num_vec = ret;
+template <class T> gvec<T>::gvec() { this->vec.assign(2, 0); }
+template <class T> gvec<T>::gvec(std::vector<T> v) {
+  this->vec.assign(v.begin(), v.end());
 }
-template <class T> gvec<T>::gvec(std::vector<T> v) { this->num_vec = v; }
-
-#endif
